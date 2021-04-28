@@ -1,0 +1,19 @@
+.usermain {
+    position: relative;
+    margin: 5px;
+    padding: 5px;
+    background-color: #eee;
+    border: 1px solid #000;
+    color: rgb(34, 17, 148);
+    width: 250px;
+    height: 100%;
+    border-radius: 5px;
+}
+
+h3 {
+    margin: 5px;
+}
+
+p{
+    margin: 5px;
+}
