@@ -11,9 +11,7 @@ class App extends Component {
         events: [],
         event: {},
         url: "http://127.0.0.1:8000/api/Diary",
-        url2: "http://127.0.0.1:8000/api/Diary/{id}",
-        url3: "http://127.0.0.1:8000/api/Diary/update/{id}",
-        url4: "http://127.0.0.1:8000/api/Diary/add",
+        url2: "http://127.0.0.1:8000/api/Diary/add",
       
       };
     
@@ -24,7 +22,8 @@ class App extends Component {
 
       deleteEvent = async id => {
     
-        await axios.delete(`${this.state.url2}/${id}`)
+       /*  await axios.delete(`${this.state.url2}/${id}`) */
+        axios.delete(`http://127.0.0.1:8000/api/Diary/${id}`)
     
         this.getEvents();
       };
@@ -33,7 +32,7 @@ class App extends Component {
         this.setState();
     
         await axios
-          .post(this.state.url4, {
+          .post(this.state.url2, {
            name: data.name,
             event: data.event,
             important: data.important
@@ -42,8 +41,27 @@ class App extends Component {
         this.getEvents();
       };
 
-    
+
       editEvent = async data => {
+        // clear event obj
+        this.setState({ event: {} });
+    
+        await axios
+          .put(`http://127.0.0.1:8000/api/Diary/update/${data.id}`, {
+           name: data.name,
+            event: data.event,
+            important: data.important
+          })
+          .catch(e => {
+            console.log(e.message);
+          });
+    
+        this.getEvents();
+      };
+
+
+    
+     /*  editEvent = async data => {
         // clear event obj
         this.setState({ event: {} });
     
@@ -60,25 +78,8 @@ class App extends Component {
         this.getEvents();
       };
 
-
-      
-     /*  editEvent = async data => {
-        // clear event obj
-        this.setState({ event: {} });
-    
-        await axios
-          .post(`${this.state.url4}/${data.id}`, {
-           name: data.name,
-            event: data.event,
-            important: data.important
-          })
-          .catch(e => {
-            console.log(e.message);
-          });
-    
-        this.getEvents();
-      }; */
-    
+ */
+ 
       componentDidMount() {
         this.getEvents();
       }
@@ -110,15 +111,15 @@ class App extends Component {
       render() {
         return (
           <div>
-            <div className="ui fixed inverted menu">
-              <div className="ui container">
+            <div >
+              <div >
                 <h1>
                   Online Diary
                 </h1>
               </div>
             </div>
     
-            <div className="ui main container">
+            <div>
               <EventAdd
                 onFormSubmit={this.onFormSubmit}
                 event={this.state.event}

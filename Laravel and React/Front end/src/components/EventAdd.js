@@ -6,7 +6,7 @@ class EventAdd extends Component {
   state = {
     form: { name: "", event: "", important: "", isEdit: false },
     btnName: "Save",
-    btnClass: "ui primary button submit-button"
+   
   };
 
   isEmptyObj(obj) {
@@ -18,7 +18,7 @@ class EventAdd extends Component {
       this.setState({
         form: { ...this.props.event, isEdit: true },
         btnName: "Update",
-        btnClass: "ui orange button submit-button"
+        
       });
       // console.log("update");
     }
@@ -112,6 +112,7 @@ clearFormFields = () => {
                           <input type="text" name="important" onChange={this.handleChange} value={this.state.form.important}/> 
                       </td>
                   </tr>
+                  
                   <tr>
                       <td></td>
                       <td>

@@ -12,18 +12,20 @@ class Event extends Component {
   };
 
   render() {
-    const { id, name, event, important } = this.props.event;
+    const { id, name, event, important, created_at, updated_at } = this.props.event;
     return (
       <tr>
         <td style={{ textAlign: "center" }}>{id}</td>
         <td>{name}</td>
         <td>{event}</td>
         <td>{important}</td>
+        <td>{created_at}</td>
+        <td>{updated_at}</td>
         <td>
-          <button className="mini ui blue button" onClick={this.onEdit}>
+          <button  onClick={this.onEdit}>
             Edit
           </button>
-          <button className="mini ui red button" onClick={this.onDelete}>
+          <button  onClick={this.onDelete}>
             Delete
           </button>
         </td>

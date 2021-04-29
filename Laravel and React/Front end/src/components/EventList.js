@@ -23,6 +23,8 @@ class EventList extends Component {
               <th  style={{ width: "148px" }}>Name</th>
               <th  style={{ width: "248px" }}>Event</th>
               <th  style={{ width: "148px" }}>Important</th>
+              <th  style={{ width: "148px" }}>Create Date</th>
+              <th  style={{ width: "148px" }}>Updated Date</th>
               <th style={{ width: "148px" }}>Action</th>
             </tr>
           </thead>
